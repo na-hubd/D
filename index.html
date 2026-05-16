@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>منصة البندري العتيبي التعليمية</title>
+<meta name="description" content="منصة تعليمية للصف السادس الابتدائي - الأستاذة البندري العتيبي">
+<meta name="theme-color" content="#8B1A4A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+/* ===== المتغيرات ===== */
+:root {
+  --primary: #8B1A4A;
+  --primary-dark: #6B1238;
+  --primary-light: #C2185B;
+  --accent: #E91E8C;
+  --accent-light: #F48FB1;
+  --gold: #D4A017;
+  --bg: #FFF5F8;
+  --bg-card: #FFFFFF;
+  --bg-soft: #FCE4EC;
+  --text-dark: #1A1A2E;
+  --text-body: #4A4A6A;
+  --text-muted: #9E9E9E;
+  --border: #F8BBD9;
+  --success: #2E7D32;
+  --warning: #F57F17;
+  --info: #1565C0;
+  --radius: 18px;
+  --radius-sm: 10px;
+  --shadow: 0 4px 24px rgba(139,26,74,0.10);
+  --shadow-lg: 0 12px 48px rgba(139,26,74,0.18);
+  --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Tajawal','Cairo',sans-serif;
+  background:var(--bg);color:var(--text-dark);
+  direction:rtl;line-height:1.7;overflow-x:hidden;
+}
+
+/* ===== NAVBAR ===== */
+.navbar{
+  background:#fff;border-bottom:2px solid var(--border);
+  padding:0 1.5rem;position:sticky;top:0;z-index:999;
+  box-shadow:0 2px 20px rgba(139,26,74,0.08);
+  display:flex;align-items:center;justify-content:space-between;height:68px;
+}
+.navbar-brand{display:flex;align-items:center;gap:0.7rem;text-decoration:none;cursor:pointer;}
+.brand-avatar{
+  width:42px;height:42px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:900;font-size:1.1rem;
+  box-shadow:0 4px 12px rgba(139,26,74,0.35);flex-shrink:0;
+}
+.brand-text h2{font-size:0.92rem;font-weight:800;color:var(--primary);line-height:1.2;}
+.brand-text span{font-size:0.70rem;color:var(--text-muted);}
+.navbar-nav{display:flex;gap:0.2rem;list-style:none;align-items:center;}
+.navbar-nav a{
+  padding:0.4rem 0.9rem;border-radius:var(--radius-sm);
+  text-decoration:none;color:var(--text-body);
+  font-weight:600;font-size:0.87rem;transition:var(--transition);cursor:pointer;
+}
+.navbar-nav a:hover,.navbar-nav a.active{background:var(--bg-soft);color:var(--primary);}
+.navbar-actions{display:flex;gap:0.6rem;align-items:center;}
+.dark-toggle{
+  background:none;border:1.5px solid var(--border);border-radius:50%;
+  width:36px;height:36px;cursor:pointer;display:flex;align-items:center;
+  justify-content:center;font-size:0.95rem;transition:var(--transition);
+}
+.dark-toggle:hover{background:var(--bg-soft);border-color:var(--primary);}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:5px;}
+.hamburger span{display:block;width:22px;height:2.5px;background:var(--primary);border-radius:2px;transition:var(--transition);}
+
+/* ===== BTNS ===== */
+.btn{
+  padding:0.6rem 1.3rem;border-radius:var(--radius-sm);
+  font-weight:700;font-size:0.88rem;cursor:pointer;border:none;
+  transition:var(--transition);text-decoration:none;
+  display:inline-flex;align-items:center;gap:0.45rem;font-family:inherit;
+}
+.btn-primary{background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;box-shadow:0 4px 16px rgba(139,26,74,0.35);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(139,26,74,0.45);}
+.btn-white{background:#fff;color:var(--primary);}
+.btn-white:hover{background:var(--bg-soft);transform:translateY(-2px);}
+.btn-outline-white{background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.4);}
+.btn-outline-white:hover{background:rgba(255,255,255,0.25);transform:translateY(-2px);}
+.btn-ghost{background:var(--bg-soft);color:var(--primary);}
+.btn-ghost:hover{background:var(--border);}
+.btn-sm{padding:0.38rem 0.85rem;font-size:0.78rem;}
+.btn-danger{background:#C62828;color:#fff;}
+.btn-danger:hover{background:#B71C1C;}
+.btn-success{background:var(--success);color:#fff;}
+
+/* ===== HERO ===== */
+.hero{
+  display:grid;grid-template-columns:1fr 1.65fr;
+  min-height:500px;margin:1.5rem;border-radius:var(--radius);
+  overflow:hidden;box-shadow:var(--shadow-lg);
+}
+.hero-info{background:#fff;padding:2.5rem;display:flex;flex-direction:column;justify-content:center;gap:1.2rem;}
+.teacher-card{display:flex;flex-direction:column;align-items:center;gap:0.4rem;text-align:center;}
+.teacher-avatar{
+  width:76px;height:76px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:2.4rem;box-shadow:0 6px 24px rgba(139,26,74,0.3);
+}
+.teacher-card h3{font-size:0.97rem;font-weight:800;color:var(--primary);}
+.teacher-card p{font-size:0.78rem;color:var(--text-muted);}
+.feature-list{display:flex;flex-direction:column;gap:0.55rem;}
+.feature-item{
+  display:flex;align-items:center;gap:0.7rem;padding:0.6rem 0.9rem;
+  border-radius:var(--radius-sm);background:var(--bg);border:1px solid var(--border);
+}
+.feature-item .ico{font-size:1.15rem;}
+.feature-item h4{font-size:0.82rem;font-weight:700;color:var(--text-dark);}
+.feature-item p{font-size:0.73rem;color:var(--text-muted);}
+
+.hero-main{
+  background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 50%,var(--accent) 100%);
+  padding:2.5rem;display:flex;flex-direction:column;justify-content:center;
+  color:#fff;position:relative;overflow:hidden;
+}
+.hero-main::before{content:'';position:absolute;top:-60px;left:-60px;width:200px;height:200px;background:rgba(255,255,255,0.07);border-radius:50%;}
+.hero-main::after{content:'';position:absolute;bottom:-40px;right:-40px;width:140px;height:140px;background:rgba(255,255,255,0.05);border-radius:50%;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.25);border-radius:50px;
+  padding:0.3rem 0.9rem;font-size:0.76rem;font-weight:600;
+  width:fit-content;margin-bottom:0.5rem;
+}
+.hero-main h1{font-size:clamp(1.6rem,3.2vw,2.6rem);font-weight:900;line-height:1.25;margin-bottom:0.7rem;}
+.hero-main p{font-size:0.92rem;opacity:0.9;line-height:1.7;max-width:440px;margin-bottom:1.4rem;}
+.hero-buttons{display:flex;gap:0.7rem;flex-wrap:wrap;}
+
+/* ===== SECTION ===== */
+.section{padding:2.5rem 1.5rem;}
+.section-title{font-size:1.55rem;font-weight:900;color:var(--text-dark);margin-bottom:0.3rem;}
+.section-subtitle{color:var(--text-muted);font-size:0.87rem;margin-bottom:1.4rem;}
+
+/* ===== CARDS ===== */
+.subjects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:1.15rem;}
+.subject-card{
+  background:var(--bg-card);border-radius:var(--radius);padding:1.4rem;
+  border:1.5px solid var(--border);transition:var(--transition);cursor:pointer;
+  position:relative;overflow:hidden;
+}
+.subject-card::before{
+  content:'';position:absolute;top:0;right:0;width:100%;height:4px;
+  background:linear-gradient(90deg,var(--primary),var(--accent));
+  border-radius:var(--radius) var(--radius) 0 0;
+}
+.subject-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--accent-light);}
+.subject-icon{
+  width:52px;height:52px;border-radius:13px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;margin-bottom:0.9rem;
+}
+.subject-card h3{font-size:1rem;font-weight:800;margin-bottom:0.35rem;}
+.subject-card p{font-size:0.80rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.9rem;}
+.subject-tags{display:flex;gap:0.35rem;flex-wrap:wrap;}
+
+.tag{padding:0.18rem 0.6rem;border-radius:50px;font-size:0.72rem;font-weight:600;}
+.tag-green{background:#E8F5E9;color:#2E7D32;}
+.tag-yellow{background:#FFF8E1;color:#F57F17;}
+.tag-pink{background:var(--bg-soft);color:var(--primary);}
+.tag-blue{background:#E3F2FD;color:#1565C0;}
+.tag-purple{background:#F3E5F5;color:#6A1B9A;}
+
+/* ===== FEATURES ===== */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;}
+.feature-card{
+  background:var(--bg-card);border-radius:var(--radius);
+  padding:1.4rem;text-align:center;
+  border:1.5px solid var(--border);transition:var(--transition);
+}
+.feature-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);}
+.feature-card .icon-wrap{
+  width:52px;height:52px;border-radius:15px;background:var(--bg-soft);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.45rem;margin:0 auto 0.9rem;
+}
+.feature-card h4{font-size:0.88rem;font-weight:700;margin-bottom:0.35rem;}
+.feature-card p{font-size:0.77rem;color:var(--text-muted);line-height:1.6;}
+
+/* ===== LESSONS LAYOUT ===== */
+.lessons-layout{display:grid;grid-template-columns:1fr 290px;gap:1.4rem;align-items:start;}
+.units-sidebar{
+  background:var(--bg-card);border-radius:var(--radius);
+  padding:1.2rem;border:1.5px solid var(--border);
+  position:sticky;top:85px;
+}
+.units-sidebar h3{font-size:0.92rem;font-weight:800;margin-bottom:0.9rem;color:var(--primary);}
+.unit-btn{
+  width:100%;padding:0.6rem 0.9rem;border-radius:var(--radius-sm);
+  border:1.5px solid var(--border);background:none;text-align:right;
+  cursor:pointer;font-family:inherit;font-size:0.81rem;font-weight:600;
+  color:var(--text-body);transition:var(--transition);margin-bottom:0.35rem;display:block;
+}
+.unit-btn:hover,.unit-btn.active{background:var(--primary);color:#fff;border-color:var(--primary);}
+.unit-content-area{flex:1;}
+.unit-header{
+  background:var(--bg-card);border-radius:var(--radius);
+  padding:1.75rem;margin-bottom:1.15rem;
+  border:1.5px solid var(--border);box-shadow:var(--shadow);
+}
+.unit-header h2{font-size:1.3rem;font-weight:900;color:var(--primary);margin-bottom:0.35rem;}
+.unit-header p{font-size:0.85rem;color:var(--text-muted);}
+.lessons-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem;}
+.lesson-card{
+  background:var(--bg-card);border-radius:var(--radius);
+  padding:1.2rem;border:1.5px solid var(--border);
+  transition:var(--transition);cursor:pointer;
+}
+.lesson-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--accent-light);}
+.lesson-card h4{font-size:0.88rem;font-weight:800;margin-bottom:0.35rem;}
+.lesson-card p{font-size:0.77rem;color:var(--text-muted);margin-bottom:0.9rem;line-height:1.6;}
+.lesson-actions{display:flex;gap:0.35rem;flex-wrap:wrap;}
+
+/* ===== PROGRESS BAR ===== */
+.progress-bar-wrap{background:var(--border);border-radius:50px;height:7px;overflow:hidden;}
+.progress-bar-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:50px;transition:width 0.6s ease;}
+
+/* ===== SEARCH ===== */
+.search-bar{position:relative;}
+.search-bar input{
+  width:100%;padding:0.7rem 1.2rem 0.7rem 2.8rem;
+  border:1.5px solid var(--border);border-radius:50px;
+  font-family:inherit;font-size:0.87rem;background:var(--bg-card);
+  color:var(--text-dark);outline:none;transition:var(--transition);direction:rtl;
+}
+.search-bar input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(139,26,74,0.10);}
+.search-icon{position:absolute;left:0.9rem;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:0.95rem;}
+
+/* ===== LESSON PAGE ===== */
+.lesson-page{max-width:880px;margin:0 auto;padding:2rem 1.5rem;}
+.lesson-header-card{
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  color:#fff;border-radius:var(--radius);padding:2rem;margin-bottom:1.4rem;
+  position:relative;overflow:hidden;
+}
+.lesson-header-card::after{content:'';position:absolute;bottom:-30px;left:-30px;width:110px;height:110px;background:rgba(255,255,255,0.07);border-radius:50%;}
+.lesson-num{font-size:0.76rem;opacity:0.8;margin-bottom:0.35rem;}
+.lesson-header-card h1{font-size:1.55rem;font-weight:900;margin-bottom:0.7rem;}
+.lesson-objectives{display:flex;flex-direction:column;gap:0.35rem;margin-top:0.7rem;}
+.objective-item{display:flex;align-items:center;gap:0.5rem;font-size:0.83rem;opacity:0.95;}
+.objective-item::before{
+  content:'✓';width:20px;height:20px;background:rgba(255,255,255,0.2);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:0.7rem;flex-shrink:0;
+}
+.lesson-content-card{
+  background:var(--bg-card);border-radius:var(--radius);
+  padding:1.65rem;border:1.5px solid var(--border);margin-bottom:1.2rem;
+}
+.lesson-content-card h3{
+  font-size:0.97rem;font-weight:800;color:var(--primary);margin-bottom:0.9rem;
+  padding-bottom:0.45rem;border-bottom:2px solid var(--border);
+  display:flex;align-items:center;gap:0.45rem;
+}
+.lesson-text{font-size:0.88rem;line-height:1.95;color:var(--text-body);}
+.video-placeholder{
+  background:var(--bg);border-radius:var(--radius-sm);height:200px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border:2px dashed var(--border);gap:0.45rem;color:var(--text-muted);font-size:0.83rem;
+}
+.video-placeholder .play-icon{font-size:2.4rem;}
+
+/* ===== QUIZ ===== */
+.quiz-container{display:flex;flex-direction:column;gap:1.15rem;}
+.quiz-question{background:var(--bg-card);border-radius:var(--radius);padding:1.4rem;border:1.5px solid var(--border);}
+.question-text{font-size:0.88rem;font-weight:700;margin-bottom:0.9rem;color:var(--text-dark);}
+.quiz-options{display:flex;flex-direction:column;gap:0.55rem;}
+.quiz-option{
+  padding:0.65rem 1rem;border-radius:var(--radius-sm);border:1.5px solid var(--border);
+  cursor:pointer;font-size:0.83rem;transition:var(--transition);
+  background:var(--bg);font-family:inherit;text-align:right;
+}
+.quiz-option:hover{border-color:var(--accent-light);background:var(--bg-soft);}
+.quiz-option.correct{border-color:var(--success);background:#E8F5E9;color:var(--success);font-weight:700;}
+.quiz-option.wrong{border-color:#C62828;background:#FFEBEE;color:#C62828;}
+
+/* ===== LESSON NAV ===== */
+.lesson-nav{
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  margin-top:1.4rem;padding:1.2rem;background:var(--bg-card);
+  border-radius:var(--radius);border:1.5px solid var(--border);
+}
+
+/* ===== DASHBOARD ===== */
+.dashboard-layout{display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 68px);}
+.dashboard-sidebar{background:var(--primary);color:#fff;padding:1.4rem 0.9rem;}
+.dashboard-sidebar .ds-logo{text-align:center;margin-bottom:1.4rem;padding-bottom:1.2rem;border-bottom:1px solid rgba(255,255,255,0.15);}
+.dashboard-sidebar .ds-logo .av{width:52px;height:52px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin:0 auto 0.4rem;}
+.dashboard-sidebar .ds-logo p{font-size:0.76rem;opacity:0.75;}
+.ds-section-title{font-size:0.7rem;opacity:0.55;text-transform:uppercase;letter-spacing:0.07em;margin:1.1rem 0 0.5rem 0;padding-right:0.5rem;}
+.sidebar-link{
+  display:flex;align-items:center;gap:0.65rem;padding:0.65rem 0.75rem;
+  border-radius:var(--radius-sm);color:rgba(255,255,255,0.8);
+  text-decoration:none;font-size:0.85rem;font-weight:600;
+  transition:var(--transition);margin-bottom:0.22rem;
+  cursor:pointer;background:none;border:none;width:100%;text-align:right;font-family:inherit;
+}
+.sidebar-link:hover,.sidebar-link.active{background:rgba(255,255,255,0.15);color:#fff;}
+.dashboard-main{padding:1.75rem;background:var(--bg);overflow-y:auto;}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:1rem;margin-bottom:1.75rem;}
+.stat-card{
+  background:var(--bg-card);border-radius:var(--radius);
+  padding:1.2rem;border:1.5px solid var(--border);
+  display:flex;align-items:center;gap:0.9rem;
+}
+.stat-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;}
+.stat-card .num{font-size:1.4rem;font-weight:900;color:var(--primary);}
+.stat-card .lbl{font-size:0.76rem;color:var(--text-muted);}
+
+/* ===== TABLE ===== */
+.data-table{width:100%;border-collapse:collapse;font-size:0.83rem;}
+.data-table th{background:var(--bg-soft);color:var(--primary);padding:0.7rem 0.9rem;text-align:right;font-weight:700;border-bottom:2px solid var(--border);}
+.data-table td{padding:0.7rem 0.9rem;border-bottom:1px solid var(--border);color:var(--text-body);}
+.data-table tr:hover td{background:var(--bg);}
+
+/* ===== DARK MODE ===== */
+body.dark-mode{
+  --bg:#0F0F1A;--bg-card:#1A1A2E;--bg-soft:#16213E;
+  --text-dark:#F0F0FF;--text-body:#B0B0D0;--border:#2A2A4A;
+}
+body.dark-mode .navbar{background:#1A1A2E;border-color:#2A2A4A;}
+body.dark-mode .hero-info{background:#1A1A2E;}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--primary-dark);color:rgba(255,255,255,0.8);text-align:center;padding:1.4rem;font-size:0.81rem;margin-top:2.5rem;}
+
+/* ===== MODAL ===== */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.52);z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:var(--transition);}
+.modal-overlay.open{opacity:1;visibility:visible;}
+.modal{background:var(--bg-card);border-radius:var(--radius);padding:1.75rem;max-width:540px;width:90%;box-shadow:var(--shadow-lg);transform:scale(0.95);transition:var(--transition);}
+.modal-overlay.open .modal{transform:scale(1);}
+.modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem;}
+.modal-header h3{font-size:1.02rem;font-weight:800;color:var(--primary);}
+.modal-close{background:none;border:none;cursor:pointer;font-size:1.2rem;color:var(--text-muted);line-height:1;}
+
+/* ===== FORM ===== */
+.form-group{margin-bottom:0.9rem;}
+.form-group label{display:block;font-size:0.81rem;font-weight:700;margin-bottom:0.35rem;color:var(--text-body);}
+.form-group input,.form-group textarea,.form-group select{
+  width:100%;padding:0.62rem 0.9rem;border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);font-family:inherit;font-size:0.86rem;
+  background:var(--bg);color:var(--text-dark);outline:none;
+  transition:var(--transition);direction:rtl;
+}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(139,26,74,0.10);}
+.form-group textarea{resize:vertical;min-height:95px;}
+
+/* ===== SKELETON ===== */
+.skeleton{
+  background:linear-gradient(90deg,var(--border) 25%,var(--bg-soft) 50%,var(--border) 75%);
+  background-size:200% 100%;animation:sk 1.5s infinite;border-radius:var(--radius-sm);
+}
+@keyframes sk{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+
+/* ===== NOTIFICATION ===== */
+.notification{
+  position:fixed;top:85px;left:1.4rem;
+  background:var(--bg-card);border:1.5px solid var(--border);
+  border-radius:var(--radius);padding:0.8rem 1.2rem;
+  box-shadow:var(--shadow-lg);font-size:0.85rem;font-weight:600;
+  display:flex;align-items:center;gap:0.55rem;z-index:9998;
+  transform:translateX(-120%);transition:transform 0.35s ease;
+}
+.notification.show{transform:translateX(0);}
+.notification.success{border-color:var(--success);color:var(--success);}
+.notification.error{border-color:#C62828;color:#C62828;}
+.notification.info{border-color:var(--info);color:var(--info);}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+@keyframes spin{to{transform:rotate(360deg);}}
+.ani{animation:fadeInUp 0.45s ease forwards;}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .navbar-nav{display:none;}
+  .hamburger{display:flex;}
+  .hero{grid-template-columns:1fr;margin:1rem;min-height:auto;}
+  .hero-info{padding:1.5rem;}
+  .hero-main{padding:2rem 1.5rem;}
+  .lessons-layout{grid-template-columns:1fr;}
+  .units-sidebar{position:static;}
+  .dashboard-layout{grid-template-columns:1fr;}
+  .dashboard-sidebar{display:none;}
+  .section{padding:1.5rem 1rem;}
+  .subjects-grid{grid-template-columns:1fr;}
+  .features-grid{grid-template-columns:repeat(2,1fr);}
+  .lesson-page{padding:1rem;}
+}
+@media(max-width:500px){
+  .features-grid{grid-template-columns:1fr;}
+  .hero-buttons{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="navbar-brand" onclick="navigate('home')">
+    <div class="brand-avatar">ب</div>
+    <div class="brand-text">
+      <h2>منصة البندري العتيبي</h2>
+      <span>الصف السادس الابتدائي • ١٤٤٧هـ</span>
+    </div>
+  </div>
+  <ul class="navbar-nav">
+    <li><a onclick="navigate('home')">الرئيسية</a></li>
+    <li><a onclick="navigate('subjects')">المواد</a></li>
+    <li><a onclick="navigate('lessons',{currentBook:DATA.books[0]})">الدروس</a></li>
+    <li><a onclick="navigate('quiz_gen')">الأسئلة الذكية</a></li>
+    <li><a onclick="navigate('dashboard')">لوحة التحكم</a></li>
+  </ul>
+  <div class="navbar-actions">
+    <button class="dark-toggle" id="darkToggle" onclick="toggleDarkMode()">🌙</button>
+    <button class="btn btn-primary btn-sm" onclick="navigate('dashboard')">⚙️ إدارة</button>
+    <button class="hamburger" onclick="toggleMobileNav()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div id="mobileNav" style="display:none;position:fixed;top:68px;right:0;left:0;background:var(--bg-card);border-bottom:2px solid var(--border);z-index:998;padding:1rem;box-shadow:var(--shadow-lg);">
+  <div style="display:flex;flex-direction:column;gap:0.2rem;">
+    <button class="sidebar-link" onclick="navigate('home');toggleMobileNav()" style="color:var(--text-body);">🏠 الرئيسية</button>
+    <button class="sidebar-link" onclick="navigate('subjects');toggleMobileNav()" style="color:var(--text-body);">📚 المواد</button>
+    <button class="sidebar-link" onclick="navigate('lessons',{currentBook:DATA.books[0]});toggleMobileNav()" style="color:var(--text-body);">📝 الدروس</button>
+    <button class="sidebar-link" onclick="navigate('quiz_gen');toggleMobileNav()" style="color:var(--text-body);">🤖 الأسئلة الذكية</button>
+    <button class="sidebar-link" onclick="navigate('dashboard');toggleMobileNav()" style="color:var(--text-body);">⚙️ لوحة التحكم</button>
+  </div>
+</div>
+
+<!-- ===== APP ===== -->
+<main id="app">
+  <div style="display:flex;align-items:center;justify-content:center;height:60vh;flex-direction:column;gap:1rem;">
+    <div style="width:56px;height:56px;border:4px solid var(--border);border-top-color:var(--primary);border-radius:50%;animation:spin 0.8s linear infinite;"></div>
+    <p style="color:var(--text-muted);font-size:0.9rem;">جاري تحميل المنصة...</p>
+  </div>
+</main>
+
+<footer class="footer" id="footer">
+  صُنع بحب <span style="color:#e53935;">❤️</span> بواسطة البندري العتيبي
+</footer>
+
+<!-- ===== MODAL ===== -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modalTitle">عنوان</h3>
+      <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    </div>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ===== NOTIFICATION ===== -->
+<div class="notification" id="notification"></div>
+
+<script>
+// ======================================================
+// ===== بيانات المنصة الكاملة =====
+// ======================================================
+const DATA = {
+  books: [
+    {
+      id:'tajweed', title:'التجويد', subtitle:'مدارس تحفيظ القرآن الكريم',
+      icon:'📖', color:'#2E7D32', bg:'#E8F5E9', pages:138,
+      units:[
+        { id:'t_u1', num:1, title:'أحكام المد',
+          lessons:[
+            { id:'t_l1', num:1, title:'المد - تعريفه وحروفه',
+              obj:['أتعرّف على معنى المد ورسمه','أميّز مواضع المد','أطبّق المد بصفة صحيحة عند التلاوة'],
+              content:`المدّ في اللغة: الزيادة والإطالة. وفي الاصطلاح: إطالة الصوت بحرف من حروف المد عند ملاقاة همز أو سكون.
+
+حروف المد ثلاثة:
+• الألف الساكنة المفتوح ما قبلها — مثل: (مَال)
+• الواو الساكنة المضموم ما قبلها — مثل: (يَقُول)
+• الياء الساكنة المكسور ما قبلها — مثل: (قِيل)
+
+قال النبي ﷺ لمن قرأ دون مد: «اقرأ كما أُقرئتَ»، وهذا دليل على وجوب رعاية المد عند التلاوة.`,
+              examples:['﴿مَالِكِ يَوْمِ الدِّينِ﴾ — مد في الألف','﴿الرَّحِيمِ﴾ — مد في الياء','﴿يَقُولُ﴾ — مد في الواو'],
+              quiz:[
+                {q:'ما المقصود بالمد في الاصطلاح؟',opts:['تقصير الصوت','إطالة الصوت بحرف من حروف المد','قطع الصوت','تنوين الحرف'],c:1},
+                {q:'كم عدد حروف المد؟',opts:['حرفان','ثلاثة','أربعة','خمسة'],c:1},
+                {q:'ما حرف المد في كلمة ﴿قَالَ﴾؟',opts:['القاف','اللام','الألف','لا يوجد'],c:2}
+              ]
+            },
+            { id:'t_l2', num:2, title:'النون الساكنة والتنوين',
+              obj:['أتعرّف على أحكام النون الساكنة','أميّز الأحكام الأربعة','أطبّقها في التلاوة'],
+              content:`للنون الساكنة والتنوين أربعة أحكام:
+
+١- الإظهار الحلقي: عند الحروف (ء هـ ع ح غ خ) — مثل: (مَن آمَن)
+٢- الإدغام: عند حروف (يرملون) — مثل: (مَن يَقول)
+٣- الإقلاب: عند الباء فقط، تُقلب ميماً — مثل: (أَنبِئهم)
+٤- الإخفاء: عند بقية الحروف الخمسة عشر — مثل: (مَن كفر)`,
+              examples:['إظهار: (إِنْ أَنتُم) — الهمزة حلقية','إدغام: (مَنْ يَعمَل)','إقلاب: (أَنْبِئْهُم)','إخفاء: (مَنْ كَفَر)'],
+              quiz:[
+                {q:'ما حكم النون الساكنة قبل حرف العين؟',opts:['إخفاء','إدغام','إظهار','إقلاب'],c:2},
+                {q:'ما حكم النون الساكنة قبل الباء؟',opts:['إظهار','إدغام','إقلاب','إخفاء'],c:2},
+                {q:'كم عدد حروف الإظهار الحلقي؟',opts:['٤','٥','٦','٧'],c:2}
+              ]
+            },
+            { id:'t_l3', num:3, title:'أحكام الميم الساكنة',
+              obj:['أتعرّف على أحكام الميم الساكنة','أميّز الأحكام الثلاثة','أطبّقها في القراءة'],
+              content:`للميم الساكنة ثلاثة أحكام:
+
+١- الإخفاء الشفوي: عند الباء مع بقاء الغنة.
+   مثل: (يَعلَمُ مَا بَيْنَ أَيدِيهِم)
+
+٢- الإدغام الشفوي: عند الميم مع الغنة.
+   مثل: (لَهُم مَّا يَشَاؤون)
+
+٣- الإظهار الشفوي: عند بقية الحروف.
+   مثل: (لَكُم دِينُكُم)`,
+              examples:['إخفاء شفوي: (هُم بِالآخرة)','إدغام شفوي: (كم من فئة)','إظهار شفوي: (لكم دينكم)'],
+              quiz:[
+                {q:'ما حكم الميم الساكنة قبل الباء؟',opts:['إظهار شفوي','إدغام شفوي','إخفاء شفوي','إقلاب'],c:2},
+                {q:'ما حكم الميم الساكنة قبل الميم؟',opts:['إخفاء شفوي','إدغام شفوي','إظهار شفوي','إقلاب'],c:1}
+              ]
+            }
+          ]
+        },
+        { id:'t_u2', num:2, title:'أحكام التفخيم والترقيق',
+          lessons:[
+            { id:'t_l4', num:4, title:'التفخيم والترقيق',
+              obj:['أعرّف التفخيم والترقيق','أعدّد حروف الاستعلاء','أطبّق القواعد في التلاوة'],
+              content:`التفخيم: تسمين الصوت ورفعه وتغليظه (الاستعلاء).
+الترقيق: تنحيف الصوت وتلطيفه (الاستفال).
+
+حروف الاستعلاء (دائماً مفخمة) سبعة: خص ضغط قظ
+(خ — ص — ض — غ — ط — ق — ظ)
+
+لام لفظ الجلالة:
+• تُفخَّم بعد فتح أو ضم: ﴿قَالَ اللهُ﴾
+• تُرقَّق بعد كسر: ﴿بِسْمِ اللهِ﴾`,
+              examples:['تفخيم: ﴿الصِّرَاطَ﴾','تفخيم: ﴿قَالَ﴾','ترقيق لام الجلالة: ﴿بِسْمِ اللهِ﴾'],
+              quiz:[
+                {q:'كم عدد حروف الاستعلاء؟',opts:['٥','٦','٧','٨'],c:2},
+                {q:'ما معنى التفخيم؟',opts:['تنحيف الصوت','تسمين الصوت وتغليظه','مد الصوت','قطع الصوت'],c:1}
+              ]
+            },
+            { id:'t_l5', num:5, title:'الوقف والابتداء',
+              obj:['أتعرّف على أنواع الوقف','أميّز بين أنواعه الأربعة','أطبّق الوقف الصحيح'],
+              content:`الوقف: قطع الصوت عند آخر الكلمة زمناً يسيراً مع التنفس بقصد استئناف القراءة.
+
+أنواعه:
+١- التام: وقف على كلمة تم معناها، ويحسن الوقف عليه.
+٢- الكافي: تم معناها وتعلقت بما بعدها معنىً لا لفظاً.
+٣- الحسن: لم يتم معناها لتعلقها بما بعدها لفظاً ومعنىً.
+٤- القبيح: يخلّ بالمراد وهو مكروه.`,
+              examples:['وقف تام: نهاية كل سورة','وقف كافي: بعد (الحمدُ للهِ)','وقف قبيح: الوقف المغير للمعنى'],
+              quiz:[
+                {q:'ما الوقف التام؟',opts:['الوقف أثناء الكلمة','الوقف على كلمة تم معناها ولم تتعلق بما بعدها','الوقف المخلّ بالمعنى','الوقف اضطراراً'],c:1},
+                {q:'أي الأنواع أقبحها؟',opts:['الوقف التام','الوقف الحسن','الوقف القبيح','الوقف الكافي'],c:2}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id:'islamic', title:'الدراسات الإسلامية', subtitle:'توحيد وحديث وفقه',
+      icon:'🕌', color:'#1565C0', bg:'#E3F2FD', pages:261,
+      units:[
+        { id:'is_u1', num:1, title:'التوحيد — الإيمان',
+          lessons:[
+            { id:'is_l1', num:1, title:'الإيمان — تعريفه وأركانه',
+              obj:['أعرّف الإيمان','أعدّد أركان الإيمان الستة','أفهم أن الإيمان يزيد وينقص'],
+              content:`الإيمان: اعتقاد بالقلب، وقول باللسان، وعمل بالجوارح.
+يزيد بالطاعة، وينقص بالمعصية.
+
+أركان الإيمان الستة:
+١- الإيمان بالله  ٢- الإيمان بالملائكة
+٣- الإيمان بالكتب  ٤- الإيمان بالرسل
+٥- الإيمان باليوم الآخر  ٦- الإيمان بالقدر خيره وشره
+
+قال الله تعالى: ﴿آمَنَ الرَّسُولُ بِمَا أُنزِلَ إِلَيْهِ مِن رَّبِّهِ وَالْمُؤْمِنُونَ كُلٌّ آمَنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ﴾`,
+              examples:['الإيمان يزيد: بكثرة العبادة والذكر والتلاوة','الإيمان ينقص: بالمعاصي والغفلة عن الله'],
+              quiz:[
+                {q:'كم عدد أركان الإيمان؟',opts:['أربعة','خمسة','ستة','سبعة'],c:2},
+                {q:'الإيمان يزيد بـ:',opts:['المعصية','الغفلة','الطاعة','الكسل'],c:2},
+                {q:'الإيمان عمل بـ:',opts:['العقل فقط','اللسان فقط','الجوارح','القلب فقط'],c:2}
+              ]
+            },
+            { id:'is_l2', num:2, title:'شُعَب الإيمان',
+              obj:['أتعرّف على شُعَب الإيمان','أذكر أعلاها وأدناها','أطبّقها في حياتي'],
+              content:`شُعَب الإيمان: بِضعٌ وسبعون شعبة.
+
+قال النبي ﷺ: «الإيمان بِضعٌ وسبعون شعبة، فأفضلها قول: لا إله إلا الله، وأدناها إماطة الأذى عن الطريق، والحياء شعبة من الإيمان».
+
+• أعلى الشعب: قول لا إله إلا الله.
+• أدنى الشعب: إماطة الأذى عن الطريق.
+• والحياء شعبة من الإيمان.`,
+              examples:['إزالة الحجر من الطريق','إغاثة المحتاج','الاستحياء من المحارم'],
+              quiz:[
+                {q:'ما أعلى شُعَب الإيمان؟',opts:['الصلاة','قول لا إله إلا الله','الصيام','إماطة الأذى'],c:1},
+                {q:'ما أدنى شُعَب الإيمان؟',opts:['الذكر','قراءة القرآن','إماطة الأذى عن الطريق','الصدقة'],c:2}
+              ]
+            },
+            { id:'is_l3', num:3, title:'نواقض الإيمان ومُنقصاته',
+              obj:['أتعرّف على نواقض الإيمان','أفرّق بين الناقض والمنقص','أحافظ على إيماني'],
+              content:`نواقض الإيمان: تُبطله وتُخرج صاحبها من الملة، أعظمها:
+• الشرك بالله  • الكفر  • الاستهزاء بالدين
+
+منقصات الإيمان: تُضعفه دون أن تُبطله، منها:
+• الكبائر كالزنا والسرقة
+• الصغائر كالكذب والغيبة
+• الغفلة عن ذكر الله
+
+العلاج: التوبة والإكثار من الطاعات.`,
+              examples:['ناقض: السجود لغير الله','منقص: الكذب والغيبة','العلاج: التوبة الصادقة'],
+              quiz:[
+                {q:'ما أعظم نواقض الإيمان؟',opts:['الكذب','الشرك بالله','الغيبة','التقصير في الصلاة'],c:1},
+                {q:'الغيبة من:',opts:['نواقض الإيمان','منقصات الإيمان','مبطلات الصلاة','لا شيء'],c:1}
+              ]
+            }
+          ]
+        },
+        { id:'is_u2', num:2, title:'التوحيد — الشرك',
+          lessons:[
+            { id:'is_l4', num:4, title:'معنى الشرك وخطره',
+              obj:['أعرّف الشرك','أفهم خطورته','أحذر منه'],
+              content:`الشرك: جعل شريك لله في شيء من خصائصه كالعبادة والدعاء والتوكل.
+
+قال الله تعالى: ﴿إِنَّ اللَّهَ لَا يَغْفِرُ أَن يُشْرَكَ بِهِ وَيَغْفِرُ مَا دُونَ ذَٰلِكَ لِمَن يَشَاءُ﴾.
+
+خطر الشرك:
+• لا يُغفر إلا بتوبة صادقة
+• يُحبط جميع الأعمال
+• صاحبه مخلّد في النار إن مات عليه`,
+              examples:['الدعاء لغير الله: شرك','الاستغاثة بالأموات: شرك','التبرك بالأضرحة: شرك'],
+              quiz:[
+                {q:'هل يغفر الله الشرك بدون توبة؟',opts:['نعم','لا','أحياناً','للمسلمين فقط'],c:1},
+                {q:'الشرك يُحبط:',opts:['الصلاة فقط','الصيام فقط','جميع الأعمال','لا يُحبط شيئاً'],c:2}
+              ]
+            },
+            { id:'is_l5', num:5, title:'أنواع الشرك',
+              obj:['أعرّف أنواع الشرك','أميّز بين الأكبر والأصغر','أحذر منهما'],
+              content:`الشرك نوعان:
+
+١- الشرك الأكبر: صرف شيء من العبادة لغير الله.
+   يُخرج من الملة ويحبط الأعمال.
+   أمثلته: دعاء الأموات، الذبح لغير الله، الطواف بالأضرحة.
+
+٢- الشرك الأصغر: ما كان ذريعة إلى الأكبر، لا يُخرج من الملة.
+   أمثلته: الرياء، والحلف بغير الله.`,
+              examples:['شرك أكبر: الذبح لغير الله','شرك أكبر: السجود للأصنام','شرك أصغر: الرياء في العبادة'],
+              quiz:[
+                {q:'الرياء من أنواع:',opts:['الشرك الأكبر','الشرك الأصغر','الكفر','النفاق'],c:1},
+                {q:'الشرك الأكبر:',opts:['لا يُخرج من الملة','يُخرج من الملة','يُحبط الصلاة فقط','مغفور دائماً'],c:1}
+              ]
+            }
+          ]
+        },
+        { id:'is_u3', num:3, title:'الحديث والسيرة',
+          lessons:[
+            { id:'is_l6', num:6, title:'رحمة النبي ﷺ للصغار',
+              obj:['أتعرّف على رحمة النبي ﷺ بالصغار','أقتدي به ﷺ في معاملتهم','أطبّق السنة في حياتي'],
+              content:`كان النبي ﷺ رحيماً بالصغار يلاطفهم ويدعو لهم.
+
+مظاهر رحمته ﷺ:
+• كان يُقبّل الأطفال ويُمازحهم
+• كان يدعو لهم بالبركة
+• كان يرشدهم بأسلوب لطيف
+• كان يصبر على أخطائهم
+
+قال أنس ﵁: «كان رسول الله ﷺ أحسن الناس خلقاً».`,
+              examples:['كان يُداعب الحسن والحسين','كان يمسح على رأس الطفل','كان يُسلّم على الصغار'],
+              quiz:[
+                {q:'كيف كان النبي ﷺ يعامل الأطفال؟',opts:['بالشدة','بالرفق واللطف','بعدم الاهتمام','بالبُعد عنهم'],c:1}
+              ]
+            }
+          ]
+        },
+        { id:'is_u4', num:4, title:'الفقه — الصلاة',
+          lessons:[
+            { id:'is_l7', num:7, title:'حكم صلاة الجمعة وصفتها',
+              obj:['أعرّف صلاة الجمعة وحكمها','أذكر شروط وجوبها','أصف صلاة الجمعة'],
+              content:`صلاة الجمعة: ركعتان في وقت الظهر يوم الجمعة، تُسبقها خطبتان.
+
+حكمها: فريضة واجبة على كل مسلم بالغ عاقل مقيم.
+
+دليلها: ﴿يَا أَيُّهَا الَّذِينَ آمَنُوا إِذَا نُودِيَ لِلصَّلَاةِ مِن يَوْمِ الْجُمُعَةِ فَاسْعَوْا إِلَىٰ ذِكْرِ اللَّهِ﴾.
+
+شروط وجوبها: الإسلام، البلوغ، العقل، الذكورة، الإقامة.`,
+              examples:['من لا تجب عليه: المسافر','من لا تجب عليه: المريض العاجز','المرأة: مستحبة لها'],
+              quiz:[
+                {q:'ما حكم صلاة الجمعة على المقيم البالغ؟',opts:['سنة','مستحبة','فرض واجب','مباحة'],c:2},
+                {q:'كم ركعة صلاة الجمعة؟',opts:['٢','٣','٤','٦'],c:0}
+              ]
+            },
+            { id:'is_l8', num:8, title:'مستحبات الجمعة',
+              obj:['أذكر مستحبات يوم الجمعة','أحرص عليها','أعظّم هذا اليوم'],
+              content:`قال النبي ﷺ: «خير يومٍ طلعت عليه الشمس يوم الجمعة».
+
+مستحبات يوم الجمعة:
+• الغسل والتطيّب ولبس أحسن الثياب
+• التبكير إلى المسجد
+• الإكثار من الصلاة على النبي ﷺ
+• قراءة سورة الكهف
+• الدعاء في ساعة الإجابة`,
+              examples:['الاغتسال قبل صلاة الجمعة','قراءة سورة الكهف','الإكثار من الصلاة على النبي ﷺ'],
+              quiz:[
+                {q:'أي السور يُستحب قراءتها يوم الجمعة؟',opts:['سورة يس','سورة الكهف','سورة الملك','سورة البقرة'],c:1},
+                {q:'الغسل يوم الجمعة:',opts:['واجب','حرام','مستحب','مكروه'],c:2}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      id:'quran', title:'تلاوة القرآن وتجويده', subtitle:'حفظ وتلاوة وتجويد',
+      icon:'📿', color:'#6A1B9A', bg:'#F3E5F5', pages:192,
+      units:[
+        { id:'q_u1', num:1, title:'الوحدة الأولى — فضل التلاوة',
+          lessons:[
+            { id:'q_l1', num:1, title:'فضل تلاوة القرآن الكريم',
+              obj:['أتعرّف على فضل التلاوة','أرغب في الإكثار منها','أطبّق آداب التلاوة'],
+              content:`قال النبي ﷺ: «اقرؤوا القرآن فإنه يأتي يوم القيامة شفيعاً لأصحابه».
+
+وقال ﷺ: «الذي يقرأ القرآن وهو ماهرٌ به مع السفرة الكرام البررة، والذي يقرأ ويتتعتع فيه وهو عليه شاق له أجران».
+
+فضائل التلاوة:
+• كل حرف بعشر حسنات
+• رفعة الدرجات عند الله
+• الشفاعة يوم القيامة
+• السكينة والطمأنينة`,
+              examples:['قوله ﷺ عن شفاعة القرآن','كل حرف بعشر حسنات','السكينة تنزل عند التلاوة'],
+              quiz:[
+                {q:'ما ثواب كل حرف من القرآن؟',opts:['حسنة','خمس حسنات','عشر حسنات','مئة حسنة'],c:2},
+                {q:'من له أجران في القراءة؟',opts:['الحافظ الماهر','الذي يتتعتع والقرآن عليه شاق','الطفل','الشيخ'],c:1}
+              ]
+            },
+            { id:'q_l2', num:2, title:'سورة ص — الآيات (١-٢٦)',
+              obj:['أتلو الآيات تلاوة صحيحة','أحفظ هذه الآيات','أتدبّر معانيها'],
+              content:`سورة ص مكية، وتتحدث عن:
+• ثبات النبي ﷺ أمام تكذيب المشركين
+• قصة سيدنا داود عليه السلام
+• قصة سيدنا سليمان عليه السلام
+• قصة سيدنا أيوب عليه السلام
+
+آداب التلاوة:
+الطهارة — الاستعاذة — البسملة — التدبّر — الترتيل`,
+              examples:['الاستعاذة قبل القراءة: ﴿أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ﴾','البسملة قبل كل سورة','الترتيل وعدم الإسراع'],
+              quiz:[
+                {q:'سورة ص مكية أم مدنية؟',opts:['مدنية','مكية','بعضها مكي وبعضها مدني','لا يُعلم'],c:1}
+              ]
+            }
+          ]
+        },
+        { id:'q_u2', num:2, title:'الوحدة الثانية — فضل الحفظ',
+          lessons:[
+            { id:'q_l3', num:3, title:'فضل حفظ القرآن الكريم',
+              obj:['أتعرّف على فضل الحفظ','أرغب فيه','أعرف مكانة الحافظ'],
+              content:`قال النبي ﷺ: «يُقال لصاحب القرآن: اقرأ وارتقِ ورتِّل كما كنت ترتّل في الدنيا، فإن منزلتك عند آخر آية تقرؤها».
+
+فضائل الحافظ:
+• يرتفع درجةً بكل آية في الجنة
+• يكون مع السفرة الكرام البررة
+• يُكسى والده تاجاً يوم القيامة
+• يكون شافعاً لأهله`,
+              examples:['الحافظ يرتقي بكل آية','يُكرَّم والده يوم القيامة','يكون شافعاً لعشرة من أهله'],
+              quiz:[
+                {q:'ما يحدث لمنزلة الحافظ بكل آية؟',opts:['تنخفض','تثبت','ترتفع درجة','لا شيء'],c:2}
+              ]
+            },
+            { id:'q_l4', num:4, title:'المد — تعريفه وحروفه (مراجعة)',
+              obj:['أراجع المد وحروفه','أطبّق ما تعلمته','أتلو الآيات مع المد الصحيح'],
+              content:`مراجعة المد:
+المد: إطالة الصوت بحرف من حروف المد (أ و ي).
+
+أنواع المد الرئيسية:
+• المد الطبيعي: مقداره حركتان، ولا تقوم ذات الحرف إلا به.
+• مد العوض: يكون في الوقف على تنوين الفتح، مثل: (عليماً) تُقرأ (عليما).
+• مد الصلة: صلة هاء الضمير بحرف مد إذا وقعت بين متحركين.`,
+              examples:['مد طبيعي: ﴿قَالَ﴾','مد عوض في الوقف: (عليماً → عليما)','مراجعة شاملة لأحكام التجويد'],
+              quiz:[
+                {q:'كم مقدار المد الطبيعي؟',opts:['حركة','حركتان','ثلاث حركات','أربع حركات'],c:1}
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+// ======================================================
+// ===== الحالة =====
+// ======================================================
+let S = {
+  page:'home', book:null, unit:null, lesson:null,
+  dark:false, progress:{}, navOpen:false, quizAnswers:{}
+};
+
+function loadState(){
+  try{const d=JSON.parse(localStorage.getItem('albandari')||'{}');S.dark=d.dark||false;S.progress=d.progress||{};}catch(e){}
+  applyDark();
+}
+function saveState(){
+  try{localStorage.setItem('albandari',JSON.stringify({dark:S.dark,progress:S.progress}));}catch(e){}
+}
+
+// ======================================================
+// ===== DARK MODE =====
+// ======================================================
+function toggleDarkMode(){S.dark=!S.dark;applyDark();saveState();}
+function applyDark(){
+  document.body.classList.toggle('dark-mode',S.dark);
+  const b=document.getElementById('darkToggle');
+  if(b)b.textContent=S.dark?'☀️':'🌙';
+}
+
+// ======================================================
+// ===== ROUTER =====
+// ======================================================
+function navigate(page, params={}){
+  S.page=page; Object.assign(S,params);
+  render(); window.scrollTo(0,0);
+}
+
+function render(){
+  const app=document.getElementById('app');
+  switch(S.page){
+    case 'home':       app.innerHTML=pageHome(); break;
+    case 'subjects':   app.innerHTML=pageSubjects(); break;
+    case 'lessons':    app.innerHTML=pageLessons(); break;
+    case 'lesson':     app.innerHTML=pageLesson(); break;
+    case 'dashboard':  app.innerHTML=pageDashboard(); break;
+    case 'quiz_gen':   app.innerHTML=pageQuizGen(); break;
+    case 'search':     app.innerHTML=pageSearch(); break;
+    default:           app.innerHTML=pageHome();
+  }
+  bindEvents();
+  applyDark();
+}
+
+// ======================================================
+// ===== HOME PAGE =====
+// ======================================================
+function pageHome(){
+  const totalLessons=DATA.books.reduce((a,b)=>a+b.units.reduce((c,u)=>c+u.lessons.length,0),0);
+  return `
+<section class="hero ani">
+  <div class="hero-info">
+    <div class="teacher-card">
+      <div class="teacher-avatar">👩‍🏫</div>
+      <h3>الأستاذة البندري العتيبي</h3>
+      <p>منصة تعليمية للصف السادس الابتدائي</p>
+    </div>
+    <div class="feature-list">
+      <div class="feature-item"><span class="ico">📖</span><div><h4>التجويد</h4><p>أحكام المد والنون الساكنة والميم والوقف</p></div></div>
+      <div class="feature-item"><span class="ico">🕌</span><div><h4>الدراسات الإسلامية</h4><p>التوحيد والحديث والفقه والسيرة النبوية</p></div></div>
+      <div class="feature-item"><span class="ico">📿</span><div><h4>تلاوة القرآن وتجويده</h4><p>فضل التلاوة والحفظ وأحكام التجويد</p></div></div>
+      <div class="feature-item"><span class="ico">✅</span><div><h4>اختبارات فورية</h4><p>تحقق من فهمك بعد كل درس مباشرة</p></div></div>
+    </div>
+  </div>
+  <div class="hero-main">
+    <div class="hero-badge">✨ الصف السادس الابتدائي • ١٤٤٧هـ</div>
+    <h1>مرحباً بك في منصة البندري العتيبي التعليمية</h1>
+    <p>منصة تجمع دروسك في التجويد والدراسات الإسلامية وتلاوة القرآن الكريم — شرح واضح، أمثلة، وتدريبات تفاعلية.</p>
+    <div style="display:flex;gap:0.7rem;font-size:0.85rem;opacity:0.9;margin-bottom:1rem;">
+      <span>📚 ${DATA.books.length} مواد</span>
+      <span>•</span>
+      <span>📝 ${totalLessons} درساً</span>
+      <span>•</span>
+      <span>❓ أسئلة ذكية</span>
+    </div>
+    <div class="hero-buttons">
+      <button class="btn btn-white" onclick="navigate('subjects')">ابدأ التصفح</button>
+      <button class="btn btn-outline-white" onclick="navigate('quiz_gen')">🤖 الأسئلة الذكية</button>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">المواد الدراسية</h2>
+  <p class="section-subtitle">اختر المادة لاستعراض وحداتها ودروسها</p>
+  <div class="subjects-grid">
+    ${DATA.books.map(b=>subjectCard(b)).join('')}
+  </div>
+</section>
+
+<div style="margin:0 1.5rem 2rem;padding:1.75rem 2rem;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:var(--radius);color:#fff;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+  <div>
+    <h3 style="font-size:1.15rem;font-weight:900;margin-bottom:0.3rem;">🎯 هل أنت مستعد للاختبار؟</h3>
+    <p style="opacity:0.9;font-size:0.86rem;">اختبر معلوماتك بأسئلة ذكية تُولَّد تلقائياً من محتوى الدروس</p>
+  </div>
+  <button class="btn btn-white" onclick="navigate('quiz_gen')">🤖 ابدأ الاختبار</button>
+</div>`;
+}
+
+function subjectCard(book){
+  const totalL=book.units.reduce((a,u)=>a+u.lessons.length,0);
+  const prog=S.progress[book.id]||0;
+  return `
+<div class="subject-card" onclick="navigate('lessons',{book:DATA.books.find(b=>b.id==='${book.id}'),unit:null,lesson:null})">
+  <div class="subject-icon" style="background:${book.bg}">${book.icon}</div>
+  <h3 style="color:${book.color}">${book.title}</h3>
+  <p>${book.subtitle} — ${book.units.length} وحدات · ${totalL} درس</p>
+  <div style="margin:0.7rem 0;">
+    <div style="display:flex;justify-content:space-between;font-size:0.73rem;margin-bottom:0.3rem;">
+      <span style="color:var(--text-muted)">التقدم</span>
+      <span style="color:${book.color};font-weight:700;">${prog}%</span>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:${prog}%;background:${book.color}"></div></div>
+  </div>
+  <div class="subject-tags">
+    <span class="tag tag-pink">شرح</span>
+    <span class="tag tag-yellow">تدريبات</span>
+    <span class="tag tag-green">اختبار</span>
+  </div>
+</div>`;
+}
+
+// ======================================================
+// ===== SUBJECTS PAGE =====
+// ======================================================
+function pageSubjects(){
+  return `
+<section class="section">
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.4rem;">
+    <div>
+      <h2 class="section-title">المواد الدراسية</h2>
+      <p class="section-subtitle">اختر المادة لاستعراض وحداتها ودروسها</p>
+    </div>
+    <div class="search-bar" style="width:280px;">
+      <input type="text" id="srch" placeholder="ابحث في المناهج..." oninput="doSearch(this.value)">
+      <span class="search-icon">🔍</span>
+      <div id="srchResults"></div>
+    </div>
+  </div>
+  <div class="subjects-grid">
+    ${DATA.books.map(b=>subjectCard(b)).join('')}
+  </div>
+</section>`;
+}
+
+function doSearch(q){
+  const res=document.getElementById('srchResults');
+  if(!res)return;
+  if(q.length<2){res.innerHTML='';return;}
+  const found=[];
+  DATA.books.forEach(b=>b.units.forEach(u=>u.lessons.forEach(l=>{
+    if(l.title.includes(q)||l.content.includes(q)) found.push({b,u,l});
+  })));
+  res.style.cssText='position:absolute;top:100%;right:0;width:100%;background:var(--bg-card);border:1.5px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-lg);z-index:999;max-height:260px;overflow-y:auto;';
+  res.innerHTML=found.length
+    ?found.map(({b,u,l})=>`<div style="padding:0.65rem 1rem;border-bottom:1px solid var(--border);cursor:pointer;font-size:0.83rem;" onclick="openLesson('${b.id}','${u.id}','${l.id}')"><strong>${l.title}</strong> <span style="color:var(--text-muted);font-size:0.73rem;">• ${b.title}</span></div>`).join('')
+    :`<div style="padding:1rem;color:var(--text-muted);text-align:center;font-size:0.83rem;">لا نتائج لـ "${q}"</div>`;
+}
+
+// ======================================================
+// ===== LESSONS PAGE =====
+// ======================================================
+function pageLessons(){
+  const book=S.book||DATA.books[0];
+  const unit=S.unit||book.units[0];
+  return `
+<section class="section">
+  <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:1.4rem;flex-wrap:wrap;">
+    <button class="btn btn-ghost btn-sm" onclick="navigate('subjects')">← المواد</button>
+    <span style="font-size:0.8rem;color:var(--text-muted);">/ ${book.title}</span>
+  </div>
+  <h2 class="section-title">الوحدات والدروس</h2>
+  <p class="section-subtitle">اختر الوحدة من القائمة الجانبية لعرض دروسها.</p>
+  <div class="lessons-layout">
+    <div class="unit-content-area">
+      <div class="unit-header">
+        <h2>${unit.title}</h2>
+        <p>اختر الدرس الذي تريد دراسته، ثم اقرأ الشرح وحلّ التدريبات والاختبار.</p>
+      </div>
+      <div class="lessons-grid">
+        ${unit.lessons.map(l=>`
+        <div class="lesson-card" onclick="openLesson('${book.id}','${unit.id}','${l.id}')">
+          <h4>الدرس ${l.num}: ${l.title}</h4>
+          <p>${l.obj[0]}</p>
+          <div class="lesson-actions">
+            <span class="tag tag-pink">عرض الشرح</span>
+            <span class="tag tag-yellow">تدريبات</span>
+            <span class="tag tag-green">اختبار</span>
+          </div>
+        </div>`).join('')}
+      </div>
+    </div>
+    <div class="units-sidebar">
+      <h3>${book.icon} الوحدات</h3>
+      ${book.units.map(u=>`
+      <button class="unit-btn ${u.id===unit.id?'active':''}"
+        onclick="navigate('lessons',{book:DATA.books.find(b=>b.id==='${book.id}'),unit:DATA.books.find(b=>b.id==='${book.id}').units.find(u=>u.id==='${u.id}'),lesson:null})">
+        الوحدة ${u.num}: ${u.title}
+      </button>`).join('')}
+    </div>
+  </div>
+</section>`;
+}
+
+// ======================================================
+// ===== OPEN LESSON =====
+// ======================================================
+function openLesson(bookId,unitId,lessonId){
+  const book=DATA.books.find(b=>b.id===bookId);
+  const unit=book?.units.find(u=>u.id===unitId);
+  const lesson=unit?.lessons.find(l=>l.id===lessonId);
+  if(lesson) navigate('lesson',{book,unit,lesson});
+}
+
+// ======================================================
+// ===== LESSON PAGE =====
+// ======================================================
+function pageLesson(){
+  const {book,unit,lesson}=S;
+  if(!lesson) return pageHome();
+
+  // تحديث التقدم
+  if(!S.progress[book.id]) S.progress[book.id]=0;
+  const total=book.units.reduce((a,u)=>a+u.lessons.length,0);
+  const doneIdx=book.units.flatMap(u=>u.lessons).findIndex(l=>l.id===lesson.id)+1;
+  S.progress[book.id]=Math.max(S.progress[book.id],Math.round(doneIdx/total*100));
+  saveState();
+
+  const allL=unit.lessons;
+  const idx=allL.findIndex(l=>l.id===lesson.id);
+  const prev=idx>0?allL[idx-1]:null;
+  const next=idx<allL.length-1?allL[idx+1]:null;
+
+  return `
+<div class="lesson-page ani">
+  <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:1rem;flex-wrap:wrap;">
+    <button class="btn btn-ghost btn-sm" onclick="navigate('lessons',{book:S.book,unit:S.unit})">← الدروس</button>
+    <span style="font-size:0.78rem;color:var(--text-muted);">/ ${book.title} / ${lesson.title}</span>
+  </div>
+
+  <div class="lesson-header-card">
+    <div class="lesson-num">الدرس ${lesson.num} • ${book.title}</div>
+    <h1>${lesson.title}</h1>
+    <div class="lesson-objectives">
+      ${lesson.obj.map(o=>`<div class="objective-item">${o}</div>`).join('')}
+    </div>
+  </div>
+
+  <div class="lesson-content-card">
+    <h3>📝 شرح الدرس</h3>
+    <div class="lesson-text">${lesson.content.replace(/\n/g,'<br>')}</div>
+  </div>
+
+  <div class="lesson-content-card">
+    <h3>💡 أمثلة وتطبيقات</h3>
+    <div style="display:flex;flex-direction:column;gap:0.5rem;">
+      ${lesson.examples.map((ex,i)=>`
+      <div style="display:flex;align-items:flex-start;gap:0.7rem;padding:0.62rem;background:var(--bg);border-radius:var(--radius-sm);border:1px solid var(--border);">
+        <span style="background:var(--primary);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.68rem;font-weight:700;flex-shrink:0;">${i+1}</span>
+        <span style="font-size:0.85rem;color:var(--text-body);">${ex}</span>
+      </div>`).join('')}
+    </div>
+  </div>
+
+  <div class="lesson-content-card">
+    <h3>🎬 مساحة الفيديو</h3>
+    <div class="video-placeholder">
+      <span class="play-icon">▶️</span>
+      <span style="font-size:0.83rem;">يمكنك إضافة رابط فيديو شرح من لوحة التحكم</span>
+      <button class="btn btn-ghost btn-sm" onclick="notify('يمكن إضافة فيديو من لوحة التحكم','info')">+ أضف فيديو</button>
+    </div>
+  </div>
+
+  <div class="lesson-content-card">
+    <h3>✅ اختبار سريع</h3>
+    <div id="quizArea">${renderQuiz(lesson.quiz,'q')}</div>
+  </div>
+
+  <div class="lesson-nav">
+    ${prev?`<button class="btn btn-ghost" onclick="openLesson('${book.id}','${unit.id}','${prev.id}')">← ${prev.title}</button>`:'<div></div>'}
+    <span style="font-size:0.78rem;color:var(--text-muted);">${idx+1} / ${allL.length}</span>
+    ${next?`<button class="btn btn-primary" onclick="openLesson('${book.id}','${unit.id}','${next.id}')">التالي: ${next.title} →</button>`:'<button class="btn btn-success" onclick="notify(\'أحسنت! أكملت هذه الوحدة 🎉\',\'success\')">🏆 أكملت الوحدة!</button>'}
+  </div>
+</div>`;
+}
+
+function renderQuiz(questions,prefix='q'){
+  if(!questions||!questions.length) return '<p style="color:var(--text-muted);font-size:0.83rem;">لا يوجد اختبار لهذا الدرس حالياً.</p>';
+  return `<div class="quiz-container">
+    ${questions.map((q,qi)=>`
+    <div class="quiz-question" id="${prefix}_q${qi}">
+      <div class="question-text">${qi+1}. ${q.q}</div>
+      <div class="quiz-options">
+        ${q.opts.map((opt,oi)=>`
+        <div class="quiz-option" id="${prefix}_${qi}_${oi}" onclick="checkAns('${prefix}',${qi},${oi},${q.c},${q.opts.length})">
+          ${['أ','ب','ج','د'][oi]}. ${opt}
+        </div>`).join('')}
+      </div>
+    </div>`).join('')}
+  </div>`;
+}
+
+function checkAns(prefix,qi,selected,correct,total){
+  for(let i=0;i<total;i++){
+    const el=document.getElementById(`${prefix}_${qi}_${i}`);
+    if(!el)continue;
+    el.style.pointerEvents='none';
+    if(i===correct) el.classList.add('correct');
+    else if(i===selected&&selected!==correct) el.classList.add('wrong');
+  }
+}
+
+// ======================================================
+// ===== DASHBOARD =====
+// ======================================================
+function pageDashboard(){
+  const totalU=DATA.books.reduce((a,b)=>a+b.units.length,0);
+  const totalL=DATA.books.reduce((a,b)=>a+b.units.reduce((c,u)=>c+u.lessons.length,0),0);
+  const totalQ=DATA.books.reduce((a,b)=>a+b.units.reduce((c,u)=>c+u.lessons.reduce((d,l)=>d+(l.quiz?.length||0),0),0),0);
+
+  return `
+<div class="dashboard-layout">
+  <div class="dashboard-sidebar">
+    <div class="ds-logo">
+      <div class="av">👩‍🏫</div>
+      <p>البندري العتيبي</p>
+    </div>
+    <div class="ds-section-title">القائمة</div>
+    <button class="sidebar-link active" onclick="navigate('dashboard')">📊 الإحصائيات</button>
+    <button class="sidebar-link" onclick="showModal('addLesson')">📝 إضافة درس</button>
+    <button class="sidebar-link" onclick="showModal('addQuestion')">❓ إضافة سؤال</button>
+    <button class="sidebar-link" onclick="navigate('quiz_gen')">🤖 أسئلة ذكية</button>
+    <div class="ds-section-title">إعدادات</div>
+    <button class="sidebar-link" onclick="toggleDarkMode()">🌙 الوضع الليلي</button>
+    <button class="sidebar-link" onclick="resetProgress()">🔄 إعادة التقدم</button>
+    <button class="sidebar-link" onclick="navigate('home')">🏠 الصفحة الرئيسية</button>
+  </div>
+  <div class="dashboard-main">
+    <h2 style="font-size:1.25rem;font-weight:900;margin-bottom:1.4rem;">📊 لوحة التحكم</h2>
+
+    <div class="stats-grid">
+      ${[
+        ['#FCE4EC','📚',DATA.books.length,'مادة'],
+        ['#E8F5E9','📦',totalU,'وحدة'],
+        ['#E3F2FD','📝',totalL,'درس'],
+        ['#FFF8E1','❓',totalQ,'سؤال']
+      ].map(([bg,ico,num,lbl])=>`
+      <div class="stat-card">
+        <div class="stat-icon" style="background:${bg}">${ico}</div>
+        <div><div class="num">${num}</div><div class="lbl">${lbl}</div></div>
+      </div>`).join('')}
+    </div>
+
+    <!-- تقدم الطلاب -->
+    <div style="background:var(--bg-card);border-radius:var(--radius);padding:1.4rem;border:1.5px solid var(--border);margin-bottom:1.25rem;">
+      <h3 style="font-size:0.97rem;font-weight:800;color:var(--primary);margin-bottom:1rem;">📈 تقدّم الطالب</h3>
+      ${DATA.books.map(b=>{
+        const prog=S.progress[b.id]||0;
+        return `
+        <div style="margin-bottom:0.9rem;">
+          <div style="display:flex;justify-content:space-between;font-size:0.82rem;margin-bottom:0.3rem;">
+            <span>${b.icon} ${b.title}</span>
+            <span style="color:${b.color};font-weight:700;">${prog}%</span>
+          </div>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:${prog}%;background:${b.color}"></div></div>
+        </div>`;
+      }).join('')}
+    </div>
+
+    <!-- جدول الكتب -->
+    <div style="background:var(--bg-card);border-radius:var(--radius);padding:1.4rem;border:1.5px solid var(--border);margin-bottom:1.25rem;overflow-x:auto;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+        <h3 style="font-size:0.97rem;font-weight:800;color:var(--primary);">📚 الكتب والدروس</h3>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr><th>الكتاب</th><th>الوحدات</th><th>الدروس</th><th>الأسئلة</th><th>إجراء</th></tr>
+        </thead>
+        <tbody>
+          ${DATA.books.map(b=>{
+            const qs=b.units.reduce((a,u)=>a+u.lessons.reduce((c,l)=>c+(l.quiz?.length||0),0),0);
+            return `
+            <tr>
+              <td><strong>${b.icon} ${b.title}</strong></td>
+              <td>${b.units.length}</td>
+              <td>${b.units.reduce((a,u)=>a+u.lessons.length,0)}</td>
+              <td>${qs}</td>
+              <td><button class="btn btn-ghost btn-sm" onclick="navigate('lessons',{book:DATA.books.find(x=>x.id==='${b.id}'),unit:null,lesson:null})">عرض</button></td>
+            </tr>`;
+          }).join('')}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- بنك الأسئلة -->
+    <div style="background:var(--bg-card);border-radius:var(--radius);padding:1.4rem;border:1.5px solid var(--border);">
+      <h3 style="font-size:0.97rem;font-weight:800;color:var(--primary);margin-bottom:1rem;">🤖 الذكاء الاصطناعي</h3>
+      <p style="font-size:0.83rem;color:var(--text-muted);margin-bottom:1rem;">يمكنك توليد أسئلة جديدة من محتوى أي درس باستخدام Claude</p>
+      <button class="btn btn-primary" onclick="navigate('quiz_gen')">🧪 جرّب الآن</button>
+    </div>
+  </div>
+</div>`;
+}
+
+function resetProgress(){
+  S.progress={};saveState();
+  notify('تم إعادة ضبط التقدم','info');
+  navigate('dashboard');
+}
+
+// ======================================================
+// ===== AI QUIZ GENERATOR =====
+// ======================================================
+function pageQuizGen(){
+  const options=DATA.books.flatMap(b=>b.units.flatMap(u=>u.lessons.map(l=>({b,u,l}))));
+  return `
+<div style="max-width:700px;margin:2rem auto;padding:0 1rem;">
+  <button class="btn btn-ghost btn-sm" onclick="navigate('dashboard')" style="margin-bottom:1rem;">← لوحة التحكم</button>
+  <div style="background:var(--bg-card);border-radius:var(--radius);padding:2rem;border:1.5px solid var(--border);">
+    <h2 style="font-size:1.15rem;font-weight:900;color:var(--primary);margin-bottom:0.4rem;">🤖 توليد أسئلة بالذكاء الاصطناعي</h2>
+    <p style="font-size:0.83rem;color:var(--text-muted);margin-bottom:1.4rem;">اختر الدرس وسيقوم الذكاء الاصطناعي بتوليد أسئلة اختيار من متعدد تلقائياً</p>
+    
+    <div class="form-group">
+      <label>اختر الدرس</label>
+      <select id="aiLessonSel">
+        ${options.map(({b,u,l})=>`<option value="${b.id}|${u.id}|${l.id}">${b.title} — ${l.title}</option>`).join('')}
+      </select>
+    </div>
+    <div class="form-group">
+      <label>عدد الأسئلة المطلوبة</label>
+      <select id="aiNumQ">
+        <option value="3">٣ أسئلة</option>
+        <option value="5" selected>٥ أسئلة</option>
+        <option value="8">٨ أسئلة</option>
+        <option value="10">١٠ أسئلة</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>محتوى إضافي (اختياري)</label>
+      <textarea id="aiExtra" placeholder="أضف أي معلومات إضافية تريد أن تُبنى عليها الأسئلة..."></textarea>
+    </div>
+    <button class="btn btn-primary" id="aiBtn" onclick="runAI()">🤖 توليد الأسئلة</button>
+    <div id="aiOut" style="margin-top:1.5rem;"></div>
+  </div>
+</div>`;
+}
+
+async function runAI(){
+  const sel=document.getElementById('aiLessonSel')?.value;
+  const num=document.getElementById('aiNumQ')?.value||'5';
+  const extra=document.getElementById('aiExtra')?.value||'';
+  const btn=document.getElementById('aiBtn');
+  const out=document.getElementById('aiOut');
+  if(!sel||!btn||!out)return;
+
+  const [bId,uId,lId]=sel.split('|');
+  const book=DATA.books.find(b=>b.id===bId);
+  const unit=book?.units.find(u=>u.id===uId);
+  const lesson=unit?.lessons.find(l=>l.id===lId);
+  if(!lesson)return;
+
+  btn.disabled=true;
+  btn.innerHTML='⏳ جاري التوليد...';
+  out.innerHTML=`<div class="skeleton" style="height:180px;border-radius:var(--radius);"></div>`;
+
+  try{
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        messages:[{role:'user',content:`أنت معلم متخصص في إنشاء الأسئلة التعليمية بالعربية. قم بإنشاء ${num} أسئلة اختيار من متعدد (٤ خيارات لكل سؤال) عن:
+
+عنوان الدرس: ${lesson.title}
+المحتوى:
+${lesson.content}
+${extra?'محتوى إضافي: '+extra:''}
+
+الأهداف: ${lesson.obj.join(' — ')}
+
+أعد الإجابة بتنسيق JSON فقط بهذا الشكل بدون أي نص قبله أو بعده:
+[{"q":"نص السؤال","opts":["الخيار أ","الخيار ب","الخيار ج","الخيار د"],"c":0}]
+حيث c هو رقم الإجابة الصحيحة (0-3).`}]
+      })
+    });
+    const data=await resp.json();
+    const text=data.content?.[0]?.text||'';
+    const clean=text.replace(/```json|```/g,'').trim();
+    const questions=JSON.parse(clean);
+
+    out.innerHTML=`
+      <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
+        <span style="background:#E8F5E9;color:#2E7D32;padding:0.25rem 0.7rem;border-radius:50px;font-size:0.78rem;font-weight:700;">✅ تم توليد ${questions.length} أسئلة</span>
+        <button class="btn btn-ghost btn-sm" onclick="printQuiz()">🖨️ طباعة</button>
+      </div>
+      ${renderQuiz(questions,'ai')}`;
+  }catch(e){
+    out.innerHTML=`<div style="color:#C62828;font-size:0.83rem;padding:0.9rem;background:#FFEBEE;border-radius:var(--radius-sm);">⚠️ حدث خطأ في التوليد. تأكد من اتصالك بالإنترنت وحاول مجدداً.</div>`;
+  }
+  btn.disabled=false;
+  btn.innerHTML='🤖 توليد الأسئلة';
+}
+
+function printQuiz(){
+  window.print();
+}
+
+// ======================================================
+// ===== MODAL =====
+// ======================================================
+function showModal(type){
+  const overlay=document.getElementById('modalOverlay');
+  const title=document.getElementById('modalTitle');
+  const body=document.getElementById('modalBody');
+  if(!overlay)return;
+
+  if(type==='addLesson'){
+    title.textContent='➕ إضافة درس جديد';
+    body.innerHTML=`
+    <div class="form-group"><label>اختر الكتاب</label>
+    <select id="mBook">${DATA.books.map(b=>`<option value="${b.id}">${b.title}</option>`).join('')}</select></div>
+    <div class="form-group"><label>عنوان الدرس</label><input id="mTitle" placeholder="أدخل عنوان الدرس..."></div>
+    <div class="form-group"><label>محتوى الدرس</label><textarea id="mContent" placeholder="أدخل شرح الدرس..."></textarea></div>
+    <div style="display:flex;gap:0.7rem;justify-content:flex-end;">
+      <button class="btn btn-ghost" onclick="closeModalDirect()">إلغاء</button>
+      <button class="btn btn-primary" onclick="notify('تم إضافة الدرس بنجاح ✅','success');closeModalDirect()">حفظ</button>
+    </div>`;
+  } else if(type==='addQuestion'){
+    title.textContent='❓ إضافة سؤال جديد';
+    body.innerHTML=`
+    <div class="form-group"><label>السؤال</label><input id="mQ" placeholder="أدخل السؤال..."></div>
+    <div class="form-group"><label>الخيار أ</label><input id="mO0" placeholder="الخيار الأول..."></div>
+    <div class="form-group"><label>الخيار ب</label><input id="mO1" placeholder="الخيار الثاني..."></div>
+    <div class="form-group"><label>الخيار ج</label><input id="mO2" placeholder="الخيار الثالث..."></div>
+    <div class="form-group"><label>الخيار د</label><input id="mO3" placeholder="الخيار الرابع..."></div>
+    <div class="form-group"><label>الإجابة الصحيحة</label>
+    <select id="mC"><option value="0">أ</option><option value="1">ب</option><option value="2">ج</option><option value="3">د</option></select></div>
+    <div style="display:flex;gap:0.7rem;justify-content:flex-end;">
+      <button class="btn btn-ghost" onclick="closeModalDirect()">إلغاء</button>
+      <button class="btn btn-primary" onclick="notify('تم إضافة السؤال بنجاح ✅','success');closeModalDirect()">حفظ</button>
+    </div>`;
+  }
+
+  overlay.classList.add('open');
+}
+
+function closeModal(e){if(e.target.id==='modalOverlay')closeModalDirect();}
+function closeModalDirect(){document.getElementById('modalOverlay')?.classList.remove('open');}
+
+// ======================================================
+// ===== NOTIFICATION =====
+// ======================================================
+function notify(msg,type='success'){
+  const n=document.getElementById('notification');
+  if(!n)return;
+  n.className=`notification ${type} show`;
+  n.innerHTML={success:'✅',error:'❌',info:'ℹ️',warning:'⚠️'}[type]+' '+msg;
+  setTimeout(()=>n.classList.remove('show'),3200);
+}
+
+// ======================================================
+// ===== MOBILE NAV =====
+// ======================================================
+function toggleMobileNav(){
+  S.navOpen=!S.navOpen;
+  const nav=document.getElementById('mobileNav');
+  if(nav)nav.style.display=S.navOpen?'block':'none';
+}
+
+// ======================================================
+// ===== BIND EVENTS =====
+// ======================================================
+function bindEvents(){
+  // إغلاق نتائج البحث عند النقر خارجها
+  document.addEventListener('click', function handler(e){
+    const res=document.getElementById('srchResults');
+    if(res&&!res.contains(e.target)&&!document.getElementById('srch')?.contains(e.target)){
+      res.innerHTML='';
+    }
+    document.removeEventListener('click',handler);
+  });
+}
+
+// ======================================================
+// ===== INIT =====
+// ======================================================
+function init(){
+  loadState();
+  render();
+}
+
+// تشغيل فوري بدون انتظار DOMContentLoaded
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+
+// خط دفاع ثانٍ - window.onload
+window.addEventListener('load', function(){
+  const app=document.getElementById('app');
+  if(app && app.querySelector('.progress-bar-fill')===null && app.querySelector('input')===null){
+    // لا تزال في شاشة التحميل — أعد التهيئة
+    init();
+  }
+});
+</script>
+
+<!-- ضمان التشغيل حتى على GitHub Pages -->
+<script>
+  try { if(typeof render==='function' && typeof loadState==='function'){ loadState(); render(); } } catch(e){}
+</script>
+</body>
+</html>
